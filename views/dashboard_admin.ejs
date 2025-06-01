@@ -1,0 +1,10 @@
+<h2>Admin Dashboard</h2>
+<ul>
+    <% jobs.forEach(job => { %>
+        <li>
+            <strong><%= job.job_name %></strong> oleh <%= job.username %> |
+            <%= job.start_date %> - <%= job.deadline %> |
+            [<%= job.is_verified ? "✔️" : `<form method='POST' action='/admin/verify/${job.id}' style='display:inline'><button>Verifikasi</button></form>` %>]
+        </li>
+    <% }) %>
+</ul>

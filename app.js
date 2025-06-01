@@ -81,5 +81,22 @@ app.post("/admin/verify/:id", (req, res) => {
         res.redirect("/admin");
     });
 });
+// Halaman form register
+app.get("/register", (req, res) => {
+    res.render("register");
+});
 
+// Proses form register
+app.post("/register", (req, res) => {
+    const { username, password } = req.body;
+    db.run("INSERT INTO users (username, password, role) VALUES (?, ?, ?)",
+        [username, password, 'user'],
+        (err) => {
+            if (err) {
+                console.error(err);
+                return res.send("Gagal mendaftar");
+            }
+            res.redirect("/");
+        });
+});
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

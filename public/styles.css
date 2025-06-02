@@ -1,5 +1,5 @@
 body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             margin: 0;
             padding: 0;
@@ -8,64 +8,70 @@ body {
             align-items: center;
             min-height: 100vh;
             color: #333;
-        }
-        
-        .container {
-            background-color: white;
+}
+
+.container {
+    background-color: white;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             width: 90%;
             max-width: 450px;
             padding: 40px;
             text-align: center;
-        }
-        
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #3498db, #8e44ad);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-        
-        label {
-            display: block;
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        input {
-            width: 100%;
-            padding: 14px;
-            font-size: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-        
-        .login-btn {
-            background: linear-gradient(135deg, #3498db, #8e44ad);
-            color: white;
-            border: none;
-            padding: 14px;
-            font-size: 1.1rem;
-            border-radius: 8px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: 600;
-            margin-top: 10px;
-        }
-        
-        .register-link {
-            margin-top: 20px;
-            font-size: 1rem;
-        }
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #2564cf;
+}
+
+form input, form button {
+  padding: 10px;
+  margin: 8px 0;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+form input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button {
+  background: #2564cf;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #174fb1;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: #f0f4ff;
+  margin-bottom: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  border-left: 5px solid #2564cf;
+}
+
+a {
+  color: #2564cf;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  margin-top: 5px;
+}

@@ -6,6 +6,40 @@ const app = express();
 const db = new sqlite3.Database("./database.db");
 const PORT = process.env.PORT || 3000;
 const { job_name, start_date, deadline, material_type, area, cluster, blok, unit_no } = req.body;
+const PDFDocument = require('pdfkit');
+
+app.get("/admin/export", (req, res) => {
+    const areaFilter = req.query.area || "";
+    const query = areaFilter
+        ? `SELECT * FROM jobs WHERE area = ? ORDER BY start_date ASC`
+        : `SELECT * FROM jobs ORDER BY start_date ASC`;
+    const params = areaFilter ? [areaFilter] : [];
+
+    db.all(query, params, (err, rows) => {
+        const doc = new PDFDocument();
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'attachment; filename=laporan.pdf');
+        doc.pipe(res);
+
+        doc.fontSize(18).text("Laporan Perapihan Cluster", { align: "center" });
+        doc.moveDown();
+
+        rows.forEach(row => {
+            doc.fontSize(12).text(
+                `Tanggal: ${row.start_date} | Deadline: ${row.deadline}\nMaterial: ${row.material_type} | Area: ${row.area} | Cluster: ${row.cluster}, Blok: ${row.blok}, No: ${row.unit_no}\nStatus: ${row.is_verified ? '✔ Diverifikasi' : '❌ Belum'}\n\n`
+            );
+        });
+
+        doc.end();
+    });
+});
+
+
+
+
+
+
+
 db.run(`INSERT INTO jobs 
 (user_id, job_name, start_date, deadline, material_type, area, cluster, blok, unit_no)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,

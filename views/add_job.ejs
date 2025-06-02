@@ -1,9 +1,46 @@
-<link rel="stylesheet" href="/styles.css" />
+<link rel="stylesheet" href="/styles.css">
 <div class="container">
-<h2>Tambah Pekerjaan</h2>
-<form method="POST" action="/user/add">
-    <input name="job_name" placeholder="Nama Pekerjaan" required><br>
-    <input type="date" name="start_date" required><br>
-    <input type="date" name="deadline" required><br>
-    <button type="submit">Submit</button>
-</form>
+  <h2>Perapihan Cluster Puri Jaya</h2>
+  <form method="POST" action="/user/add">
+      <label>Nama Pekerjaan</label>
+      <input name="job_name" required>
+
+      <label>Tanggal Entry</label>
+      <input type="date" name="start_date" value="<%= new Date().toISOString().split('T')[0] %>" readonly>
+
+      <label>Tanggal Deadline</label>
+      <input type="date" name="deadline" required>
+
+      <label>Jenis Material</label>
+      <select name="material_type" required>
+          <option>Bata</option>
+          <option>Batu Kali</option>
+          <option>Besi</option>
+          <option>Pasir</option>
+          <option>Puing</option>
+          <option>Split</option>
+          <option>Sampah</option>
+          <option>Tanah</option>
+      </select>
+
+      <label>Area</label>
+      <select name="area" required>
+          <option>Batavia</option>
+          <option>Puri</option>
+          <option>Rajeg</option>
+          <option>Sepatan</option>
+          <option>Lainnya</option>
+      </select>
+
+      <label>Cluster</label>
+      <input name="cluster" required>
+
+      <label>Blok</label>
+      <input name="blok" required>
+
+      <label>No Unit</label>
+      <input name="unit_no" required>
+
+      <button type="submit">Submit Pekerjaan</button>
+  </form>
+</div>

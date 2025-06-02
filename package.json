@@ -1,12 +1,16 @@
 {
   "name": "job-verification-app",
   "version": "1.0.0",
-  "description": "Aplikasi Material Puri",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "sqlite3": "^5.1.6",
     "pdfkit": "^0.13.0"
-    "express": "^4.18.2"
   }
 }

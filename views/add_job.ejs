@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="/styles.css">
+<div class="container">
+  <h2>Perapihan Cluster</h2>
+  <form method="POST" action="/user/add">
+      <label>Tanggal Entry</label>
+      <input type="date" name="start_date" value="<%= new Date().toISOString().split('T')[0] %>" required>
+
+      <label>Tanggal Deadline</label>
+      <input type="date" name="deadline" required>
+
+      <label>Jenis Material</label>
+      <select name="material_type" required>
+          <option>Bata</option>
+          <option>Batu Kali</option>
+          <option>Besi</option>
+          <option>Pasir</option>
+          <option>Puing</option>
+          <option>Split</option>
+          <option>Sampah</option>
+          <option>Tanah</option>
+      </select>
+
+      <label>Area</label>
+      <select name="area" required>
+          <option>Batavia</option>
+          <option>Puri</option>
+          <option>Rajeg</option>
+          <option>Sepatan</option>
+          <option>Lainnya</option>
+      </select>
+
+      <label>Cluster</label>
+      <input name="cluster" required>
+
+      <label>Blok</label>
+      <input name="blok" required>
+
+      <label>No Unit</label>
+      <input name="unit_no" required>
+
+      <button type="submit">Submit Pekerjaan</button>
+  </form>
+</div>

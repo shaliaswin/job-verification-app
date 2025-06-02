@@ -80,9 +80,19 @@ app.post("/user/add", (req, res) => {
 });
 
 app.get("/admin", (req, res) => {
-    if (!req.session.user || req.session.user.role !== "admin") return res.redirect("/");
-    db.all("SELECT jobs.*, users.username FROM jobs JOIN users ON jobs.user_id = users.id", [], (err, jobs) => {
-        res.render("dashboard_admin", { jobs });
+    const areaFilter = req.query.area || ""; // ambil dari query string
+    const query = areaFilter
+        ? `SELECT jobs.*, users.username FROM jobs 
+           JOIN users ON jobs.user_id = users.id 
+           WHERE area = ? ORDER BY start_date ASC`
+        : `SELECT jobs.*, users.username FROM jobs 
+           JOIN users ON jobs.user_id = users.id 
+           ORDER BY start_date ASC`;
+
+    const params = areaFilter ? [areaFilter] : [];
+
+    db.all(query, params, (err, jobs) => {
+        res.render("dashboard_admin", { jobs, areaFilter });
     });
 });
 

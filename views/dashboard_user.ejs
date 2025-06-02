@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/styles.css" />
+<div class="container">
+  <h2>Perapihan Cluster</h2>
+  <p>Halo, <%= user.username %>!</p>
+  <a href="/user/add">+ Tambah Pekerjaan</a>
+  <ul>
+    <% jobs.forEach(job => { %>
+      <li>
+        <strong><%= job.material_type %></strong> |
+        <%= job.area %> |
+        <%= job.start_date %> - <%= job.deadline %> |
+        Cluster: <%= job.cluster %>, Blok: <%= job.blok %>, No: <%= job.unit_no %> |
+        <%= job.is_verified ? "✔ Diverifikasi" : "❌ Belum" %>
+      </li>
+    <% }) %>
+  </ul>
+</div>

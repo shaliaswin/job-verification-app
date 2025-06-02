@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/styles.css" />
+<div class="container">
+  <h2>Perapihan Cluster</h2>
+  <form method="GET" action="/admin">
+    <label>Filter Area:</label>
+    <select name="area" onchange="this.form.submit()">
+      <option value="">Semua Area</option>
+      <option value="Batavia" <%= areaFilter === 'Batavia' ? 'selected' : '' %>>Batavia</option>
+      <option value="Puri" <%= areaFilter === 'Puri' ? 'selected' : '' %>>Puri</option>
+      <option value="Rajeg" <%= areaFilter === 'Rajeg' ? 'selected' : '' %>>Rajeg</option>
+      <option value="Sepatan" <%= areaFilter === 'Sepatan' ? 'selected' : '' %>>Sepatan</option>
+      <option value="Lainnya" <%= areaFilter === 'Lainnya' ? 'selected' : '' %>>Lainnya</option>
+    </select>
+  </form>
+  <form method="GET" action="/admin/export">
+    <input type="hidden" name="area" value="<%= areaFilter %>">
+    <button type="submit">Export PDF</button>
+  </form>
+  <ul>
+    <% jobs.forEach(job => { %>
+      <li>
+        <%= job.start_date %> - <%= job.deadline %><br>
+        Area: <%= job.area %>, Material: <%= job.material_type %><br>
+        Cluster: <%= job.cluster %>, Blok: <%= job.blok %>, No: <%= job.unit_no %><br>
+        Oleh: <%= job.username %><br>
+        <% if (!job.is_verified) { %>
+          <form method="POST" action="/admin/verify/<%= job.id %>">
+            <button>Verifikasi</button>
+          </form>
+        <% } else { %>✔️ Diverifikasi<% } %>
+      </li>
+    <% }) %>
+  </ul>
+</div>

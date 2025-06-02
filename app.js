@@ -5,7 +5,12 @@ const sqlite3 = require("sqlite3").verbose();
 const app = express();
 const db = new sqlite3.Database("./database.db");
 const PORT = process.env.PORT || 3000;
-
+const { job_name, start_date, deadline, material_type, area, cluster, blok, unit_no } = req.body;
+db.run(`INSERT INTO jobs 
+(user_id, job_name, start_date, deadline, material_type, area, cluster, blok, unit_no)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+[req.session.user.id, job_name, start_date, deadline, material_type, area, cluster, blok, unit_no],
+() => res.redirect("/user"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -23,13 +28,18 @@ db.serialize(() => {
         role TEXT
     )`);
     db.run(`CREATE TABLE IF NOT EXISTS jobs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER,
-        job_name TEXT,
-        start_date TEXT,
-        deadline TEXT,
-        is_verified INTEGER DEFAULT 0
-    )`);
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    job_name TEXT,
+    start_date TEXT,
+    deadline TEXT,
+    material_type TEXT,
+    area TEXT,
+    cluster TEXT,
+    blok TEXT,
+    unit_no TEXT,
+    is_verified INTEGER DEFAULT 0
+)`);
     db.get("SELECT * FROM users WHERE username = 'admin'", (err, row) => {
         if (!row) {
             db.run("INSERT INTO users (username, password, role) VALUES ('admin', 'admin', 'admin')");

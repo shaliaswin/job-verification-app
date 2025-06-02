@@ -1,7 +1,17 @@
 <link rel="stylesheet" href="/styles.css" />
 <div class="container">
 <h2>Perapihan Cluster</h2>
-
+<form method="GET" action="/admin">
+  <label>Filter Area:</label>
+  <select name="area" onchange="this.form.submit()">
+      <option value="">Semua Area</option>
+      <option value="Batavia" <%= areaFilter === 'Batavia' ? 'selected' : '' %>>Batavia</option>
+      <option value="Puri" <%= areaFilter === 'Puri' ? 'selected' : '' %>>Puri</option>
+      <option value="Rajeg" <%= areaFilter === 'Rajeg' ? 'selected' : '' %>>Rajeg</option>
+      <option value="Sepatan" <%= areaFilter === 'Sepatan' ? 'selected' : '' %>>Sepatan</option>
+      <option value="Lainnya" <%= areaFilter === 'Lainnya' ? 'selected' : '' %>>Lainnya</option>
+  </select>
+</form>
 <% if (jobs.length === 0) { %>
   <p>Tidak ada pekerjaan yang dikirim oleh user.</p>
 <% } else { %>

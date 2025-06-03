@@ -1,7 +1,7 @@
 
 {
   "scripts": {
-    "build": "tsc", // Jika menggunakan TypeScript
+    "build": "babel src --out-dir dist", // Jika menggunakan Babel
     "start": "node dist/index.js",
     "dev": "nodemon src/index.js"
   }

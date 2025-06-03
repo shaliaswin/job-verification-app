@@ -1,1 +1,15 @@
-
+services:
+  - type: web
+    name: job-verification-app
+    runtime: node
+    buildCommand: cd server && npm install && npm run build
+    startCommand: node server/dist/index.js
+    envVars:
+      - key: MONGODB_URI
+        value: your_mongodb_uri
+      - key: JWT_SECRET
+        value: your_jwt_secret
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production

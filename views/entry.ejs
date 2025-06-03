@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Perapihan Cluster</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Perapihan Cluster<br>Puri Jaya & Batavia</h2>
+    <form method="POST" enctype="multipart/form-data">
+      <input name="date" value="<%= date %>" readonly>
+      <select name="material">
+        <option disabled selected>Jenis Material</option>
+        <option>Bata</option><option>Batu Kali</option><option>Besi</option>
+        <option>Pasir</option><option>Puing</option><option>Split</option>
+        <option>Sampah</option><option>Tanah</option>
+      </select>
+      <select name="area">
+        <option disabled selected>Pilih Area</option>
+        <option>Batavia</option><option>Puri</option><option>Rajeg</option>
+        <option>Sepatan</option><option>PT PSK</option><option>PT PILAR</option>
+        <option>PT ARS</option><option>PT TJU</option><option>PT MBC</option>
+        <option>PT Lainnya</option>
+      </select>
+      <input name="cluster" placeholder="Cluster" required>
+      <input name="blok" placeholder="Blok" required>
+      <input name="unit" placeholder="No Unit" required>
+      <input type="file" name="photo" accept="image/*" required>
+      <button type="submit">Kirim Data</button>
+    </form>
+    <a href="/logout">Logout</a>
+  </div>
+</body>
+</html>
